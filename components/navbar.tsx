@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Logo } from "./logo.jsx";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { Button } from "./ui/button";
 
 export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -47,6 +48,10 @@ export default function NavBar() {
         "Support",
         "Log Out",
     ];
+
+    const openGitHub = () => {
+        window.open('https://github.com/affan-ch/Linko', '_blank'); // Replace 'https://github.com' with your desired URL
+      };
 
     return (
 
@@ -82,7 +87,7 @@ export default function NavBar() {
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-5">
-                <NavbarItem>
+                <NavbarItem isActive>
                     <Link color="foreground" href="/shorten">
                         Shorten Links
                     </Link>
@@ -100,6 +105,11 @@ export default function NavBar() {
             </NavbarContent>
 
             <NavbarContent as="div" className="items-center" justify="end">
+                <Button variant="outline" size="icon" onClick={openGitHub}>
+                    <Github className="h-[1.2rem] w-[1.2rem] transition-all" />
+                    <span className="sr-only">GitHub</span>
+                </Button>
+
                 <ThemeToggle />
 
                 <DropdownMenu>
